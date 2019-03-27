@@ -5,6 +5,7 @@
 - Computer mit einem Browser
 - Terminal (zum Beispiel [CMDER](http://cmder.net) für Windows oder [iTerm](https://www.iterm2.com) für MacOS)
 - [Node.js](http://nodejs.org)
+- [Visual Studio Code](https://code.visualstudio.com)
 
 ## Vorbereitungen
 
