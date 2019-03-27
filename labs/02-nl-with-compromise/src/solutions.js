@@ -33,11 +33,11 @@ result = doc.verbs().length;
 outputResult(2, result);
 
 // solution 3
-result = doc.sentences().slice(2,3).toPastTense().out();
+result = doc.sentences(2).toPastTense().out('text');
 outputResult(3, result);
 
 // solution 4
-result = doc.verbs().slice(0, 50).out('frequency');
+result = doc.verbs().out('frequency').slice(0,50);
 outputFrequencyResult(4, result);
 
 // solution 5
