@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "compromise": "^11.13.1"
+    "compromise": "^11.13.1",
+    "src": "^1.1.2"
   }
 }

@@ -1,4 +1,4 @@
-# Ähnliche Wörter finden
+# Einführung in Natural Language Processing 2: Ähnliche Wörter finden
 
 In dieser Übung nutzen wir zum ersten mal Regeln, welche durch Machine Learning Methoden erzeugt wurden.
 Hierfür verwenden wir die Machine Learning Bibliothek [ml5js](https://ml5js.org).

@@ -1,4 +1,4 @@
-# Einführung in Natural Language Processing
+# Einführung in NLP 1: Vorverarbeitung
 
 Willkommen im Lab zum Thema "Natural Language Processing".
 In unserer ersten Übung befassen wir uns lediglich mit dem Setup der Umgebung und prüfen ob alles läuft.
