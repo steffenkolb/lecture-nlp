@@ -8,6 +8,13 @@
 
 ## Vorbereitungen
 
+### Repository herunterladen
+
+Ladet euch zunächst dieses Repository herunter. Dies geht über folgenden Link: https://github.com/steffenkolb/lecture-nlp/archive/master.zip
+Entpackt das Archiv und verschiebt es an einen Ort eurer Wahl. Im Archiv findet ihr genau diese `REAMDE.md`-Datei wieder.
+
+### Webserver installieren
+
 Um die Übungen lokal auszuführen, ist es notwendig die Dateien über einen Webserver bereitzustellen.
 
 Wir benutzen hierfür [Parcel](https://parceljs.org). Das Programm generieren die Dateien der Website und stellt diese durch einen Webserver zur Verfügung. Um das Programm nutzen zu können installieren wir `Parcel` am besten betriebssystemweit.
