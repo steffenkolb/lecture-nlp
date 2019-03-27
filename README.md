@@ -16,10 +16,18 @@ Wir benutzen hierfür [Parcel](https://parceljs.org). Das Programm generieren di
 npm install -g parcel-bundler
 ```
 
+## Aufbau der Experimente
+
+Sämtliche Übungen sind im Ordner `labs` zu finden. Zu jedem Experimente findet ihre eine eigene `README.md` Datei.
+Dort ist die Installation und der Start eines Experiments beschrieben.
+
 ## Quellen
 
-### Theory
+### Theorie
 
+- Handbook of Natural Language Processing, Chapman & Hall, CRC Press 2010
+- [SWR2 Wissen: Aula - Digitale Wunderwelt - Kontrolliert künstliche Intelligenz den Menschen? (23.2.2019)](https://itunes.apple.com/de/podcast/swr2-wissen/id104913043?mt=2&i=1000430467096)
+- [Natural Language Processing is Fun!, Adam Geitgey, 2018](https://medium.com/@ageitgey/natural-language-processing-is-fun-9a0bff37854e)
 - [Wikipedia: Mehrdeutigkeit](https://de.wikipedia.org/wiki/Mehrdeutigkeit#Mehrdeutigkeit_lexikalischer_Zeichen)
 
 ### Coding
