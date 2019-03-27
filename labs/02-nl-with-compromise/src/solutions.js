@@ -1,3 +1,26 @@
+var nlp = require('compromise')
+
+// lade den Text
+var labText = document.getElementById("labText").value;
+
+// Behilfsfunktion um ein Ergebnis auszugeben
+function outputResult(excercise, result) {
+    let id = "output_"+excercise;
+    let output = document.getElementById(id);
+    output.innerHTML = result;
+}
+
+// Behilfsfunktion um eine Liste von Ergebnissen auszugeben
+function outputFrequencyResult(excercise, result) {
+    let id = "output_"+excercise;
+    let output = document.getElementById(id);
+    output.innerHTML = "";
+
+    result.forEach((m,i) => {
+        output.innerHTML += m.normal + ": " + m.count + "\n";
+    })
+}
+
 var doc = nlp(labText);
 let result;
 
@@ -6,7 +29,7 @@ result = doc.sentences().length;
 outputResult(1, result);
 
 // solution 2
-result = doc.nouns().length;
+result = doc.verbs().length;
 outputResult(2, result);
 
 // solution 3
