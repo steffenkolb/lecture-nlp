@@ -33,7 +33,7 @@ result = doc.verbs().length;
 outputResult(2, result);
 
 // solution 3
-result = doc.sentences().slice(3,4).toPastTense().out();
+result = doc.sentences().slice(2,3).toPastTense().out();
 outputResult(3, result);
 
 // solution 4
