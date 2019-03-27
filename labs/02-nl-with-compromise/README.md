@@ -2,6 +2,7 @@
 
 In diesem Experiment führt ihr selbst NLP-Übungen durch.
 Eure Aufgaben findet ihr in der Datei `experiment.js` im Stammordner des Experiments.
+Als Grundlage verwenden wir in dieser Übung [compromise.js](http://compromise.cool).
 
 ## Installation
 
