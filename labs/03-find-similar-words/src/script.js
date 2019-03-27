@@ -18,7 +18,7 @@ function setup() {
 
 
     // Create a new word2vec method
-    const wordVectors = ml5.word2vec(./data/wordvecs10000.json, modelLoaded);          
+    const wordVectors = ml5.word2vec('./data/wordvecs10000.json', modelLoaded);          
 
     btnSubmit.mousePressed(() => {
     // reset output
