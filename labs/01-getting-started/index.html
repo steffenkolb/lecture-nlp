@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Getting Started with NLP</title>
+      <link rel="stylesheet" href="https://unpkg.com/normalize.css@7.0.0/normalize.css" crossorigin="anonymous">
+      <link rel="stylesheet" href="../../files/skeleton.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    </head>
+
+    <body>
+      <div class="container">
+        <h1>Natural Language Processing with NLP</h1>
+        <div>
+          <h5>TOKENIZATION</h5>
+          <div class="row">
+            <input class="twelve columns" id="tokenizationInput" class="u-full-width" type="text" placeholder="Type an English sentence" >
+          </div>
+          <div class="row">
+            <h6>Tokens of this sentence:</h6>
+            <pre class="twelve columns"><code id="tokenizationOutput"><!-- Output will go here --></code></pre>
+          </div>
+        </div>
+        <hr>
+        <div>
+          <h5>STEMMING</h5>
+          <div class="row">
+              <input class="twelve columns" id="stemmingInput" class="u-full-width" type="text" placeholder="Type an English word" >
+            </div>
+            <div class="row">
+              <h6>Stem of the word:</h6>
+              <pre class="twelve columns"><code id="stemmingOutput"><!-- Output will go here --></code></pre>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <h5>DISTANCE CALCULATION</h5>
+            <div class="row">
+                <input class="five columns" id="distInputOne" class="u-full-width" type="text" placeholder="Type any phrase or word" >
+                <input class="five columns" id="distInputTwo" class="u-full-width" type="text" placeholder="Type another phrase or word" >
+                <button class="two columns" id="distBtn" class="button-primary">Calculate</button>
+              </div>
+              <div class="row">
+                <h6>Distance between words:</h6>
+                <pre class="twelve columns"><code id="distOutput"><!-- Output will go here --></code></pre>
+              </div>
+          </div>
+      </div>
+      <script src="src/script.js"></script>
+    </body>
+  </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Getting Started with Word2Vec</title>
+      <link rel="stylesheet" href="https://unpkg.com/normalize.css@7.0.0/normalize.css" crossorigin="anonymous">
+      <link rel="stylesheet" href="../../files/skeleton.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+      <script src="https://unpkg.com/ml5@0.1.3/dist/ml5.min.js"></script>
+    </head>
+
+    <body>
+      <div class="container">
+        <h1>Word2Vec Wordfinder</h1>
+        <div class="row">
+          <h6>YOUR WORD</h6>
+          <input id="yourWord" class="u-full-width" type="text" placeholder="Choose an English word" >
+          <button id="btnSubmit" class="button-primary" disabled>Submit</button>
+        </div>
+        <div class="row">
+          <h6>SIMILAR WORDS</h6>
+          <pre><code id="output"><!-- Output will go here --></code></pre>
+        </div>
+      </div>
+      
+      <script src="script.js"></script>
+    </body>
+  </html>
