@@ -18,13 +18,13 @@ npm install
 
 ## Das Experiment starten
 
-Sollte dies ohne Problem durchlaufen, starten wir die Übung mithilfe von Parcel.
+Sollte dies ohne Problem durchlaufen, starten wir die Übung mithilfe von NPM.
 Öffnet ein Terminal-Programm eurer Wahl und führt folgende Befehle aus.
 Ersetzt den `Projekt\Ordner`Pfad dabei mit dem Pfad zu diesem Experiment.
 
 ```bash
 cd C:\Projekt\Ordner
-parcel index.html
+npm run start
 ```
 
 Danach ist die Übung über einen Webbrowser der Wahl unter folgender Addresse erreichbar:

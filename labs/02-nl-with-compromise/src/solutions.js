@@ -1,49 +1,28 @@
-var nlp = require('compromise')
+import * as helper from './helper';
 
-// lade den Text
-var labText = document.getElementById("labText").value;
-
-// Behilfsfunktion um ein Ergebnis auszugeben
-function outputResult(excercise, result) {
-    let id = "output_"+excercise;
-    let output = document.getElementById(id);
-    output.innerHTML = result;
-}
-
-// Behilfsfunktion um eine Liste von Ergebnissen auszugeben
-function outputFrequencyResult(excercise, result) {
-    let id = "output_"+excercise;
-    let output = document.getElementById(id);
-    output.innerHTML = "";
-
-    result.forEach((m,i) => {
-        output.innerHTML += m.normal + ": " + m.count + "\n";
-    })
-}
-
-var doc = nlp(labText);
+var doc = helper.getDoc();
 let result;
 
-// solution 1
+// solution 1: Wieviele Sätze hat der Text?
 result = doc.sentences().length;
-outputResult(1, result);
+helper.outputResult(1, result);
 
-// solution 2
+// solution 2: Wieviele Verben?
 result = doc.verbs().length;
-outputResult(2, result);
+helper.outputResult(2, result);
 
-// solution 3
+// solution 3: Verwandle den dritten Satz in die Vergangenheit.
 result = doc.sentences(2).toPastTense().out('text');
-outputResult(3, result);
+helper.outputResult(3, result);
 
-// solution 4
+// solution 4: Liste die Top 50 Verben dieses Textes auf.
 result = doc.verbs().out('frequency').slice(0,50);
-outputFrequencyResult(4, result);
+helper.outputFrequencyResult(4, result);
 
-// solution 5
+// solution 5: Welches sind die ersten fünf Fragen des Textes?
 result = doc.questions().slice(0,5).out('text');
-outputResult(5, result);
+helper.outputResult(5, result);
 
-// solution 6
+// solution 6: Liste alle Personen des Textes auf, die mindestens 2 mal vorkommen.
 result = doc.people().sort('frequency').out('frequency').filter((m,i) => m.count >= 2);
-outputFrequencyResult(6, result); /**/
+helper.outputFrequencyResult(6, result);

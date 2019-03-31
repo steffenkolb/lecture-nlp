@@ -16,9 +16,8 @@ function setup() {
     let btnSubmit = select("#btnSubmit");
     let yourWordElement = select("#yourWord");
 
-
     // Create a new word2vec method
-    const wordVectors = ml5.word2vec('./data/wordvecs10000.json', modelLoaded);          
+    const wordVectors = ml5.word2vec('./static/wordvecs10000.json', modelLoaded);          
 
     btnSubmit.mousePressed(() => {
     // reset output

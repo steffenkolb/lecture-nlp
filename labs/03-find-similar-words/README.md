@@ -12,7 +12,7 @@ Falls dies problemlos möglich ist, könnt ihr versuchen das Experiment der [ml5
 Damit diese Übgung funktioniert, müssen die Regeln heruntergeladen werden.
 
 - Lade das Word2Vec-Model unter https://github.com/ml5js/ml5-examples/blob/master/p5js/Word2Vec/data/wordvecs10000.json herunter
-- Speichere die Datei im `data`-Ordner dieses Experiments
+- Speichere die Datei im `static`-Ordner dieses Experiments
 
 ML5js-Experimente können leider nicht über Parcel gestartet werden.
 Deshalb müssen wir einen weiteren Webserver installieren. Dies geschieht wie gewohnt über NPM:
@@ -23,11 +23,11 @@ npm install
 
 ## Das Experiment starten
 
-Das Experiment starten wir nun mithilfe der [http-server](https://github.com/indexzero/http-server)-Bibliothek:
+Das Experiment starten wir nun wie gewohnt über npm:
 
 ```bash
 cd C:\Projekt\Ordner
-http-server
+npm run start
 ```
 
 Danach ist die Übung über einen Webbrowser der Wahl unter folgender Addresse erreichbar:

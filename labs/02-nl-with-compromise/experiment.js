@@ -1,38 +1,14 @@
 /**
  * Einführung in Natural Language Processing 2: Textanalyse
- * 
- * Die folgenden Zeilen beschreiben den Setup des Experiments.
- * Eure Aufgabe und Lösungen findet ihr in Abschnitt 2.
  **/
 
-var nlp = require('compromise')
-
-// lade den Text
-var labText = document.getElementById("labText").value;
-
-// Behilfsfunktion um ein Ergebnis auszugeben
-function outputResult(excercise, result) {
-    let id = "output_"+excercise;
-    let output = document.getElementById(id);
-    output.innerHTML = result;
-}
-
-// Behilfsfunktion um eine Liste von Ergebnissen auszugeben
-function outputFrequencyResult(excercise, result) {
-    let id = "output_"+excercise;
-    let output = document.getElementById(id);
-    output.innerHTML = "";
-
-    result.forEach((m,i) => {
-        output.innerHTML += m.normal + ": " + m.count + "\n";
-    })
-}
+// Laden eines externen Moduls zur Vorverarbeitung des Textes und für den Zugriff auf Helper-Funktionen.
+import * as helper from './src/helper';
 
 // Laden des Textes in die NLP-Biblitothek
-var doc = nlp(labText);
+var doc = helper.getDoc();
 
 /**
- * ABSCHNITT 2:
  * Hier findet ihr eure Aufgaben. Zur Lösung empfehle ich die Dokumentation unter https://github.com/spencermountain/compromise/wiki/QuickStart
  * Alle Ergebnisse speichert ihr in die Variable "result".
  * 
@@ -42,27 +18,56 @@ var doc = nlp(labText);
 // Dies ist eure Ergebnisvariable
 let result;
 
-// experiment 1: Wieviele Sätze hat der Text?
+/**
+ * Experiment 1: Wieviele Sätze hat der Text?
+ * Speichere deine Ergebnis in diese Variable.
+ */
 result = "???";
-outputResult(1, result);
 
+// Ausgabe des Ergebnises an Position 1
+helper.outputResult(1, result);
 
-// experiment 2: Wieviele Verben?
+/**
+ * Experiment 2: Wieviele Verben?
+ * Speichere deine Ergebnis in diese Variable.
+ */
 result = "???";
-outputResult(2, result);
 
-// experiment 3: Verwandle den dritten Satz in die Vergangenheit.
-result = "???";
-outputResult(3, result);
+// Ausgabe des Ergebnises an Position 2
+helper.outputResult(2, result);
 
-// experiment 4: Liste die Top 50 Verben dieses Textes auf.
+/**
+ * Experiment 3: Verwandle den dritten Satz in die Vergangenheit.
+ * Speichere deine Ergebnis in diese Variable.
+ */
 result = "???";
-outputFrequencyResult(4, result);
 
-// experiment 5: Welches sind die ersten fünf Fragen des Textes?
-result = "???";
-outputResult(5, result);
+// Ausgabe des Ergebnises an Position 3
+helper.outputResult(3, result);
 
-// experiment 6: Liste alle Personen des Textes auf, die mindestens 2 mal vorkommen.
+/**
+ * Experiment 4: Liste die Top 50 Verben dieses Textes auf.
+ * Speichere deine Ergebnis in diese Variable.
+ */
 result = "???";
-outputFrequencyResult(6, result); /**/
+
+// Ausgabe des Ergebnises an Position 4
+helper.outputFrequencyResult(4, result);
+
+/**
+ * Experiment 5: Welches sind die ersten fünf Fragen des Textes?
+ * Speichere deine Ergebnis in diese Variable.
+ */
+result = "???";
+
+// Ausgabe des Ergebnises an Position 5
+helper.outputResult(5, result);
+
+/**
+ * Experiment 6: Liste alle Personen des Textes auf, die mindestens 2 mal vorkommen.
+ * Speichere deine Ergebnis in diese Variable.
+ */
+result = "???";
+
+// Ausgabe des Ergebnises an Position 6
+helper.outputFrequencyResult(6, result);
