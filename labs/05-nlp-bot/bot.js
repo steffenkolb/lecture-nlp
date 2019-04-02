@@ -16,7 +16,7 @@ const axios = require('axios');
 var mqtt = require('mqtt')
 
 // replace this with the borker IP address
-var client  = mqtt.connect('mqtt://192.168.178.57');
+var client  = mqtt.connect('mqtt://localhost');
 
 // Topic to send the event to
 const led_topic = "iot/led";

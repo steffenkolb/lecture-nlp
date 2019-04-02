@@ -7,6 +7,199 @@
         "info": ""
     },
     {
+        "id": "e26090fc.d2d46",
+        "type": "inject",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "temp",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "x": 160,
+        "y": 40,
+        "wires": [
+            [
+                "82bf369e.d171"
+            ]
+        ]
+    },
+    {
+        "id": "1c0b7653.ae79c2",
+        "type": "mqtt out",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/temp",
+        "qos": "0",
+        "retain": "false",
+        "broker": "f562f84f.192888",
+        "x": 560,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "6ba45fa3.4abf9",
+        "type": "http in",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "url": "/temp",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "4430261.0b920d8"
+            ]
+        ]
+    },
+    {
+        "id": "9cede88e.00de58",
+        "type": "http response",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 560,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "bdba31f3.db689",
+        "type": "mqtt in",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/temp",
+        "qos": "2",
+        "broker": "f562f84f.192888",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "e7cd5599.8e5e7"
+            ]
+        ]
+    },
+    {
+        "id": "e7cd5599.8e5e7",
+        "type": "function",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "func": "global.set(\"currentTemp\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "467e659d.bfed44"
+            ]
+        ]
+    },
+    {
+        "id": "467e659d.bfed44",
+        "type": "debug",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 560,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "4430261.0b920d8",
+        "type": "function",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "func": "msg.payload = global.get(\"currentTemp\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "9cede88e.00de58"
+            ]
+        ]
+    },
+    {
+        "id": "82bf369e.d171",
+        "type": "random",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "low": "-10",
+        "high": "30",
+        "inte": "true",
+        "property": "payload",
+        "x": 380,
+        "y": 40,
+        "wires": [
+            [
+                "1c0b7653.ae79c2"
+            ]
+        ]
+    },
+    {
+        "id": "e7d3e60c.3b0d5",
+        "type": "inject",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/led",
+        "payload": "ON",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "c7518a7a.33c12"
+            ]
+        ]
+    },
+    {
+        "id": "c7518a7a.33c12",
+        "type": "mqtt out",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/led",
+        "qos": "0",
+        "retain": "false",
+        "broker": "f562f84f.192888",
+        "x": 550,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "3891090d.82d216",
+        "type": "inject",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/led",
+        "payload": "OFF",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "x": 170,
+        "y": 340,
+        "wires": [
+            [
+                "c7518a7a.33c12"
+            ]
+        ]
+    },
+    {
         "id": "f562f84f.192888",
         "type": "mqtt-broker",
         "z": "",
@@ -25,905 +218,5 @@
         "willQos": "0",
         "willRetain": "false",
         "willPayload": ""
-    },
-    {
-        "id": "6140c2e9.ec6df4",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#008899",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#008899",
-                    "edited": true
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#008899",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#00cce5",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#008899",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "IoT Dashboard",
-            "hideToolbar": "true",
-            "allowSwipe": "false",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            },
-            "allowTempTheme": "none"
-        }
-    },
-    {
-        "id": "ed6dd600.7526b8",
-        "type": "ui_tab",
-        "z": "",
-        "name": "Home",
-        "icon": "dashboard"
-    },
-    {
-        "id": "dfc6c25b.9332d",
-        "type": "ui_group",
-        "z": "",
-        "name": "Sensors",
-        "tab": "ed6dd600.7526b8",
-        "order": 3,
-        "disp": true,
-        "width": "12",
-        "collapse": true
-    },
-    {
-        "id": "b682c18d.3b1e1",
-        "type": "ui_group",
-        "z": "",
-        "name": "History",
-        "tab": "ed6dd600.7526b8",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "f9368988.000808",
-        "type": "mongodb-config",
-        "z": "",
-        "hostname": "database",
-        "port": "27017",
-        "db": "admin",
-        "name": ""
-    },
-    {
-        "id": "5dcb4781.791248",
-        "type": "ui_group",
-        "z": "",
-        "name": "Hello World",
-        "tab": "ed6dd600.7526b8",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": true
-    },
-    {
-        "id": "e0dd8a01.b11fe8",
-        "type": "mqtt in",
-        "z": "450bdebc.db8468",
-        "name": "iot",
-        "topic": "iot/+",
-        "qos": "0",
-        "broker": "f562f84f.192888",
-        "x": 150,
-        "y": 240,
-        "wires": [
-            [
-                "54fd0abc.d06dd4",
-                "c305a2f3.2b8f6",
-                "b1cab159.2185c8",
-                "d83ee463.340588"
-            ]
-        ]
-    },
-    {
-        "id": "1c531a6c.08b956",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "b682c18d.3b1e1",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Total",
-        "format": "{{msg.count}}",
-        "layout": "row-spread",
-        "x": 530,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "b2d723ad.ba11b8",
-        "type": "ui_gauge",
-        "z": "450bdebc.db8468",
-        "name": "Temperature",
-        "group": "dfc6c25b.9332d",
-        "order": 1,
-        "width": "6",
-        "height": "4",
-        "gtype": "gage",
-        "title": "Temp",
-        "label": "°C",
-        "format": "{{value}}",
-        "min": "-25",
-        "max": "40",
-        "colors": [
-            "#00B5AA",
-            "#E6E600",
-            "#CA3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 470,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "a21ca88a.b5b65",
-        "type": "mqtt in",
-        "z": "450bdebc.db8468",
-        "name": "mqtt",
-        "topic": "iot/+",
-        "qos": "0",
-        "broker": "f562f84f.192888",
-        "x": 150,
-        "y": 500,
-        "wires": [
-            [
-                "498b7ffd.c58618"
-            ]
-        ]
-    },
-    {
-        "id": "3d546af8.af67e6",
-        "type": "join",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "mode": "custom",
-        "build": "array",
-        "property": "",
-        "propertyType": "full",
-        "key": "topic",
-        "joiner": " \\n",
-        "joinerType": "str",
-        "accumulate": false,
-        "timeout": "",
-        "count": "5",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 470,
-        "y": 180,
-        "wires": [
-            [
-                "1f724128.69b087",
-                "c0d2b690.07c88"
-            ]
-        ]
-    },
-    {
-        "id": "54fd0abc.d06dd4",
-        "type": "debug",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "active": false,
-        "console": false,
-        "complete": "false",
-        "x": 350,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "c7545f50.16ca6",
-        "type": "ui_chart",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "group": "b682c18d.3b1e1",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "label": "Messages per Second",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "bezier",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "60",
-        "cutout": 0,
-        "useOneColor": false,
-        "colors": [
-            "#1F77B4",
-            "#AEC7E8",
-            "#FF7F0E",
-            "#2CA02C",
-            "#98DF8A",
-            "#D62728",
-            "#FF9896",
-            "#9467BD",
-            "#C5B0D5"
-        ],
-        "useOldStyle": false,
-        "x": 580,
-        "y": 300,
-        "wires": [
-            [],
-            []
-        ]
-    },
-    {
-        "id": "c305a2f3.2b8f6",
-        "type": "counter",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "init": "0",
-        "step": "1",
-        "lower": "",
-        "upper": "",
-        "mode": "increment",
-        "outputs": 1,
-        "x": 340,
-        "y": 360,
-        "wires": [
-            [
-                "1c531a6c.08b956"
-            ]
-        ]
-    },
-    {
-        "id": "12648c47.5ba104",
-        "type": "mqtt out",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "topic": "iot/test",
-        "qos": "0",
-        "retain": "false",
-        "broker": "f562f84f.192888",
-        "x": 560,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "c65545fc.b22b3",
-        "type": "inject",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "topic": "iot/test",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "0.5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "0.5",
-        "x": 190,
-        "y": 100,
-        "wires": [
-            [
-                "95547834.c8045"
-            ]
-        ]
-    },
-    {
-        "id": "b1cab159.2185c8",
-        "type": "msg-speed",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "frequency": "sec",
-        "estimation": false,
-        "ignore": false,
-        "x": 350,
-        "y": 300,
-        "wires": [
-            [
-                "c7545f50.16ca6"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "1f724128.69b087",
-        "type": "ui_list",
-        "z": "450bdebc.db8468",
-        "group": "b682c18d.3b1e1",
-        "name": "",
-        "order": 2,
-        "width": "6",
-        "height": "7",
-        "lineType": "two",
-        "actionType": "none",
-        "allowHTML": false,
-        "x": 630,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d83ee463.340588",
-        "type": "function",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "func": "msg.title = msg.payload;\nmsg.description = msg.topic;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 330,
-        "y": 180,
-        "wires": [
-            [
-                "3d546af8.af67e6"
-            ]
-        ]
-    },
-    {
-        "id": "c0d2b690.07c88",
-        "type": "debug",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "active": false,
-        "console": false,
-        "complete": "false",
-        "x": 650,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "498b7ffd.c58618",
-        "type": "switch",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "iot/temp",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "iot/humidity",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "iot/dist",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "iot/ir",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "iot/light",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 5,
-        "x": 290,
-        "y": 500,
-        "wires": [
-            [
-                "b2d723ad.ba11b8"
-            ],
-            [
-                "eaa614c1.cc173"
-            ],
-            [
-                "a95f7598.e67228"
-            ],
-            [
-                "59e171b2.2aff3"
-            ],
-            [
-                "f7356122.c916d"
-            ]
-        ]
-    },
-    {
-        "id": "eaa614c1.cc173",
-        "type": "ui_chart",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "group": "dfc6c25b.9332d",
-        "order": 2,
-        "width": "6",
-        "height": "4",
-        "label": "Humidity",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "colors": [
-            "#1F77B4",
-            "#AEC7E8",
-            "#FF7F0E",
-            "#2CA02C",
-            "#98DF8A",
-            "#D62728",
-            "#FF9896",
-            "#9467BD",
-            "#C5B0D5"
-        ],
-        "useOldStyle": false,
-        "x": 460,
-        "y": 480,
-        "wires": [
-            [],
-            []
-        ]
-    },
-    {
-        "id": "a95f7598.e67228",
-        "type": "ui_gauge",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "group": "dfc6c25b.9332d",
-        "order": 4,
-        "width": "6",
-        "height": "6",
-        "gtype": "wave",
-        "title": "Distance",
-        "label": "",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "1",
-        "colors": [
-            "#00B500",
-            "#E6E600",
-            "#CA3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 460,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "59e171b2.2aff3",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "dfc6c25b.9332d",
-        "order": 5,
-        "width": "6",
-        "height": "2",
-        "name": "",
-        "label": "Infrared",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 460,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "95547834.c8045",
-        "type": "function",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "func": "msg.payload = new Date().toISOString();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 390,
-        "y": 100,
-        "wires": [
-            [
-                "12648c47.5ba104"
-            ]
-        ]
-    },
-    {
-        "id": "f7356122.c916d",
-        "type": "ui_gauge",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "group": "dfc6c25b.9332d",
-        "order": 3,
-        "width": "6",
-        "height": "6",
-        "gtype": "donut",
-        "title": "Brightness",
-        "label": "",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "4095",
-        "colors": [
-            "#000000",
-            "#E6E600",
-            "#FFFFFF"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 470,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "36434348.d3d40c",
-        "type": "mqtt in",
-        "z": "450bdebc.db8468",
-        "name": "hello",
-        "topic": "hello/+",
-        "qos": "0",
-        "broker": "f562f84f.192888",
-        "x": 150,
-        "y": 820,
-        "wires": [
-            [
-                "de6196ce.55fed8"
-            ]
-        ]
-    },
-    {
-        "id": "de6196ce.55fed8",
-        "type": "switch",
-        "z": "450bdebc.db8468",
-        "name": "",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "hello/fabian",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/andreas",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/luis",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/noah",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/julia",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/christopher",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/gösta",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/viola",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/maurice",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/florian",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "hello/manuel",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 11,
-        "x": 290,
-        "y": 820,
-        "wires": [
-            [
-                "880bd833.0b2978"
-            ],
-            [
-                "2a66a3c7.b3ece4"
-            ],
-            [
-                "6f72d674.42f3c8"
-            ],
-            [
-                "e91cc260.76d428"
-            ],
-            [
-                "b40dfb83.e997"
-            ],
-            [
-                "b502e8eb.211f28"
-            ],
-            [
-                "552fd4af.8a9934"
-            ],
-            [
-                "70a56ef4.e1ed5"
-            ],
-            [
-                "8bdbf484.397b6"
-            ],
-            [
-                "9d3b27c5.cae598"
-            ],
-            [
-                "5853d089.1fade8"
-            ]
-        ]
-    },
-    {
-        "id": "880bd833.0b2978",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "fabian",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 490,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "2a66a3c7.b3ece4",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "andreas",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 500,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "6f72d674.42f3c8",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "luis",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 490,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "e91cc260.76d428",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "noah",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 490,
-        "y": 820,
-        "wires": []
-    },
-    {
-        "id": "b40dfb83.e997",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "julia",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 490,
-        "y": 860,
-        "wires": []
-    },
-    {
-        "id": "b502e8eb.211f28",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "christopher",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 510,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "552fd4af.8a9934",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "gösta",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 490,
-        "y": 940,
-        "wires": []
-    },
-    {
-        "id": "70a56ef4.e1ed5",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "viola",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 490,
-        "y": 980,
-        "wires": []
-    },
-    {
-        "id": "8bdbf484.397b6",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "maurice",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 500,
-        "y": 1020,
-        "wires": []
-    },
-    {
-        "id": "9d3b27c5.cae598",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "florian",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 490,
-        "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "5853d089.1fade8",
-        "type": "ui_text",
-        "z": "450bdebc.db8468",
-        "group": "5dcb4781.791248",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "manuel",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 500,
-        "y": 1100,
-        "wires": []
     }
 ]
