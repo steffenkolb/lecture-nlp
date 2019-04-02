@@ -18,6 +18,7 @@
         "botframework-config": "^4.2.0",
         "compromise": "^11.13.2",
         "dotenv": "^6.1.0",
+        "mqtt": "^2.18.8",
         "restify": "^7.2.3"
     },
     "devDependencies": {

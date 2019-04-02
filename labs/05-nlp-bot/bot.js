@@ -3,10 +3,28 @@
 
 const { ActivityTypes } = require('botbuilder');
 
-// helper library for HTTP-requests: https://github.com/request/request
+/**
+ * Axios is an synchronous/asynchronous HTTP-client library.
+ * We will use it to look for the temperature as well as time: https://github.com/request/request
+ */
 const axios = require('axios');
 
-// load library for NLP: http://compromise.cool
+/**
+ * We will use MQTT to send message to IOT devicses
+ * https://www.npmjs.com/package/mqtt
+ */
+var mqtt = require('mqtt')
+
+// replace this with the borker IP address
+var client  = mqtt.connect('mqtt://192.168.178.57');
+
+// Topic to send the event to
+const led_topic = "iot/led";
+
+/**
+ * We will use compromise NLP library for text-matching.
+ * http://compromise.cool
+ */
 const nlp = require('compromise');
 
 // define your own plugins / patterns for use in compromise
@@ -21,7 +39,23 @@ const plugin = {
         // asking for the time
         "what time is it": "Time",
         "how late is it": "Time",
-        "what is the time": "Time"
+        "what is the time": "Time",
+
+        // asking for the temperature
+        "is it (cold|hot)": "Temp",
+        "how (cold|warm|hot) is it": "Temp",
+        "what is the current? (temperature|temp)": "Temp",
+
+        // lights on
+        "please? turn on? the? (light|lights)": "Lights_On",
+        "please? turn? (light|lights) on": "Lights_On",
+        "it is getting? dark": "Lights_On",
+        "getting? dark in here": "Lights_On",
+        
+        // lights off
+        "please? turn off? the? (light|lights)": "Lights_Off",
+        "please? turn? (light|lights) off": "Lights_Off",
+        "it is getting? (bright|light)": "Lights_Off",
     }
 }
 
@@ -94,6 +128,7 @@ class MyBot {
                 await this.username.set(turnContext, userName);
             }
 
+            // get current time from external webservice
             else if(userMessage.has('#Time')) {
                 // request time from internet api
                 let timeRequest = await axios.get('http://worldtimeapi.org/api/ip');
@@ -103,6 +138,35 @@ class MyBot {
 
                 // respond to user
                 await turnContext.sendActivity(`The current time is ${time}.`);
+            }
+
+            // get current temperature from local node-red server
+            else if(userMessage.has('#Temp')) {
+                // request time from internet api
+                let tempRequest = await axios.get('http://127.0.0.1:1880/temp');
+
+                // convert to readable format
+                let temp = tempRequest.data;
+
+                // respond to user
+                await turnContext.sendActivity(`The current temperature is ${temp}°C.`);
+            }
+
+            // turn lights on via mqtt
+            else if(userMessage.has('#Lights_On')) {
+                // turning on the lights
+                client.publish(led_topic, 'ON');
+
+                // respond to user
+                await turnContext.sendActivity(`There shall be light`);
+            }
+            // turn lights off via mqtt
+            else if(userMessage.has('#Lights_Off')) {
+                // turning on the lights
+                client.publish(led_topic, 'OFF');
+
+                // respond to user
+                await turnContext.sendActivity(`Dark. Isn't it?`);
             }
 
             // everything else

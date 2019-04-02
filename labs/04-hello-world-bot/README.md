@@ -32,7 +32,7 @@ This simple bot accepts input from the user and echoes it back.
 
 [Bot Framework Emulator][5] ist eine Desktop-Anwendung welche sich mit dem Bot verbindet und somit einen interaktiven Test ermöglicht.
 
-- Installiere den Bot Framework Emulator der Version 4.2.0 or höher von [here][6]
+- Installiere den Bot Framework Emulator der Version 4.2.0 or höher von [hier][6]
 
 ### Verbinde den Bot und den Bot Framework Emulator
 
