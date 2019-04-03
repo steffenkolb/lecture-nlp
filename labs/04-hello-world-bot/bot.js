@@ -24,7 +24,7 @@ class MyBot {
             // interpret usermessage with compromise for further use
             var userMessage = nlp(rawtext);
 
-            if(userMessage.match("welcome")) {
+            if(userMessage.has("welcome")) {
                 await turnContext.sendActivity(`Hello you!`);
             }
             await turnContext.sendActivity(`You said "${rawtext}"`);
