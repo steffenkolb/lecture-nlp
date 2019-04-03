@@ -29,6 +29,11 @@ npm install -g parcel-bundler
 Sämtliche Übungen sind im Ordner `labs` zu finden. Zu jedem Experimente findet ihre eine eigene `README.md` Datei.
 Dort ist die Installation und der Start eines Experiments beschrieben.
 
+## Resourcen
+
+Im Ordner `resources` findest du zusätzliche Materialien zu den Experimenten.
+Enthalten sind eine NodeRed-Konfiguration sowie ein Arduino-Projekt zum senden und empfangen von MQTT-Nachrichten.
+
 ## Quellen
 
 ### Theorie
