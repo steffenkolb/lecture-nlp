@@ -47,14 +47,14 @@ const plugin = {
         "what is the current? (temperature|temp)": "Temp",
 
         // lights on
-        "please? turn on? the? (light|lights)": "Lights_On",
-        "please? turn? (light|lights) on": "Lights_On",
+        "please? turn on the? (light|lights)": "Lights_On",
+        "please? turn? the? (light|lights) on": "Lights_On",
         "it is getting? dark": "Lights_On",
         "getting? dark in here": "Lights_On",
         
         // lights off
-        "please? turn off? the? (light|lights)": "Lights_Off",
-        "please? turn? (light|lights) off": "Lights_Off",
+        "please? turn off the? (light|lights)": "Lights_Off",
+        "please? turn? the? (light|lights) off": "Lights_Off",
         "it is getting? (bright|light)": "Lights_Off",
     }
 }
