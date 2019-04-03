@@ -1,5 +1,5 @@
 {
-    "name": "nlp-bot",
+    "name": "hello-world-bot",
     "version": "1.0.0",
     "description": "Demonstration bot for educational purposes",
     "author": "Generated using Microsoft Bot Builder Yeoman generator v4.2.6",
@@ -14,6 +14,7 @@
     "dependencies": {
         "botbuilder": "^4.2.0",
         "botframework-config": "^4.2.0",
+        "compromise": "^11.13.2",
         "dotenv": "^6.1.0",
         "restify": "^7.2.3"
     },

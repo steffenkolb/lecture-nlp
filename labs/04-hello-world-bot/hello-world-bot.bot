@@ -1,7 +1,16 @@
 {
     "name": "hello-world-bot",
     "description": "",
-    "services": [],
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "development",
+            "endpoint": "http://localhost:3978/api/messages",
+            "appId": "",
+            "appPassword": "",
+            "id": "1"
+        }
+    ],
     "padlock": "",
     "version": "2.0",
     "path": "/Users/steffen/Projects/hfg gmuend/ai for designers/dev/lecture-nlp/labs/04-hello-world-bot/hello-world-bot.bot",

@@ -1,5 +1,5 @@
 {
-    "name": "steffen-chat-bot",
+    "name": "nlp-chat-bot",
     "services": [
         {
             "type": "endpoint",
