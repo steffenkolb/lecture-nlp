@@ -1,11 +1,11 @@
 # Hello World Chatbot
 
-We will implement our first chatbot using Microsoft [Bot Framework][1].
-This simple bot accepts input from the user and echoes it back.
+Wir implementieren und testen unseren ersten Chatbot mithilfe des Microsoft [Bot Frameworks][1].
+Dieser einfache Echo-Bot empfängt die Eingabe des Nutzers und wiederholt die Nachricht.
 
 ## Vorraussetzungen
 
-- [Node.js][4] version 8.5 oder höher
+- [Node.js][4] in der Version 8.5 oder höher
 
     ```bash
     # determine node version
@@ -16,7 +16,7 @@ This simple bot accepts input from the user and echoes it back.
 
 ## Bot starten
 
-- Node module installieren
+- Node Module installieren
 
     ```bash
     npm install
@@ -40,10 +40,20 @@ This simple bot accepts input from the user and echoes it back.
 - Starte die Bot Framework Emulator Anwendung
 - Gehe zu `File -> Open Bot Configuration`
 - Navigiere zum `04-hello-world-bot`-Ordner
-- Wähle die `hello-world-bot.bot`-Dateu
+- Wähle die `hello-world-bot.bot`-Datei
+
+## Aufgaben
+
+1. Bringe deinem Bot eine Begrüßung bei
+2. Lass ihn einen Witz erzählen
+3. Ermögliche dem Bot „persönliche“ Fragen zu beantworten
+    - Lieblingsessen, -song, -vorlesung, …
+    - Stimmung, Hobbies, …
 
 ## Weitere Informationen
 
+- Compromise Syntax Matching: [Tutorial](https://observablehq.com/@spencermountain/compromise-match-syntax), [Documentation](https://github.com/spencermountain/compromise/wiki/Match-Syntax)
+- [Building a Bot with Compromise](https://observablehq.com/@spencermountain/compromise-making-a-bot)
 - [Bot Framework Documentation][20]
 - [Bot Basics][32]
 - [Azure Bot Service Introduction][21]

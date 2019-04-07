@@ -1,8 +1,7 @@
 {
-    "name": "nlp-bot",
+    "name": "iot-bot",
     "version": "1.0.0",
     "description": "Demonstration bot for educational purposes",
-    "author": "Generated using Microsoft Bot Builder Yeoman generator v4.2.6",
     "license": "MIT",
     "main": "index.js",
     "scripts": {

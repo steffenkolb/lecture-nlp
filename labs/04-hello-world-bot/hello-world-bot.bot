@@ -13,6 +13,6 @@
     ],
     "padlock": "",
     "version": "2.0",
-    "path": "/Users/steffen/Projects/hfg gmuend/ai for designers/dev/lecture-nlp/labs/04-hello-world-bot/hello-world-bot.bot",
+    "path": "./hello-world-bot.bot",
     "overrides": null
 }

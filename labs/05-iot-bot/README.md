@@ -1,13 +1,21 @@
 # NLP Chatbot
 
-We will implement our first chatbot using Microsoft [Bot Framework][1].
-In this example we will enhance our bot with the use of basic NLP.
+Auch bei unserem zweiten Chatbot nutzen wir das Microsoft [Bot Framework][1].
+Bei diesem Bot benutzen wir ein internes Gedächtnis des Bots,
+welches Informationen über mehrere Nachrichten hinweg behält.
 
-Not only will our bot be able to answer more intelligent, but also use external resources to answer questions.
+Zusätzlich werden wir externe Resourcen ansprechen und somit Webservices abrufen
+und IoT-Devices über den Chatbot ansteuern.
+
+Die Übung setzt folgende Resourcen vorraus (zu finden im Ordner `resources` des Projekts):
+
+- Eine Internetverbindung zum Abruf der aktuellen Uhrzeit
+- Webservice zum Abruf der Temperatur auf http://localhost:1880/temp
+- MQTT-Broker zum Ansprechen der IoT-Devices auf http://localhost:1883
 
 ## Vorraussetzungen
 
-- [Node.js][4] version 8.5 oder höher
+- [Node.js][4] der Version 8.5 oder höher
 
     ```bash
     # determine node version
@@ -18,7 +26,7 @@ Not only will our bot be able to answer more intelligent, but also use external 
 
 ## Bot starten
 
-- Node module installieren
+- Node Module installieren
 
     ```bash
     npm install
@@ -41,8 +49,8 @@ Not only will our bot be able to answer more intelligent, but also use external 
 - Starte den Bot [über NPM](#Bot-starten)
 - Starte die Bot Framework Emulator Anwendung
 - Gehe zu `File -> Open Bot Configuration`
-- Navigiere zum `05-nlp-bot`-Ordner
-- Wähle die `nlp-bot.bot`-Dateu
+- Navigiere zum `05-iot-bot`-Ordner
+- Wähle die `iot-bot.bot`-Dateu
 
 ## Weitere Informationen
 
