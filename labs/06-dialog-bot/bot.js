@@ -18,6 +18,9 @@ const NAME_PROMPT = 'name_prompt';
 const CONFIRM_PROMPT = 'confirm_prompt';
 const AGE_PROMPT = 'age_prompt';
 
+// just a constant string to access the user values
+const USER_INFO = 'user_info';
+
 /**
  * We will use compromise NLP library for text-matching.
  * http://compromise.cool
@@ -36,8 +39,10 @@ class DailogBot {
         this.conversationState = conversationState;
         this.userState = userState;
 
+        // create accessor for the conversation state. This enables us to capture and store conversation specific properties.
+        // Also create an accessor for userProfile. This enables us to capture and store user-specific properties.
+        // For more info either see here: https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-state?view=azure-bot-service-4.0&tabs=javascript
         this.dialogState = this.conversationState.createProperty(DIALOG_STATE_PROPERTY);
-
         this.userProfile = this.userState.createProperty(USER_PROFILE_PROPERTY);
 
         this.dialogs = new DialogSet(this.dialogState);
@@ -78,14 +83,14 @@ class DailogBot {
 
     // This step in the dialog prompts the user for their name.
     async promptForName(step) {
+        // create new object to store the user_info into
+        step.values[USER_INFO] = {};
         return await step.prompt(NAME_PROMPT, `What is your name, human?`);
     }
 
     // This step captures the user's name, then prompts whether or not to collect an age.
     async confirmAgePrompt(step) {
-        const user = await this.userProfile.get(step.context, {});
-        user.name = step.result;
-        await this.userProfile.set(step.context, user);
+        step.values[USER_INFO].name = step.result;
         await step.prompt(CONFIRM_PROMPT, 'Do you want to give your age?', ['yes', 'no']);
     }
 
@@ -105,19 +110,34 @@ class DailogBot {
 
     // This step captures the user's age.
     async captureAge(step) {
-        const user = await this.userProfile.get(step.context, {});
-        if (step.result !== -1) {
-            user.age = step.result;
-            await this.userProfile.set(step.context, user);
+        if (step.result !== -1) {            
+            // store the age in the info-object
+            step.values[USER_INFO].age = step.result;
             await step.context.sendActivity(`I will remember that you are ${ step.result } years old.`);
         } else {
             await step.context.sendActivity(`No age given.`);
         }
+
+        // finally save all this informationen into the user-specific memory
+        // tipp: if you are going to use all the information anyways,
+        // just store it into the profile right away in each step :)
+
+        // First: Get the state properties from the turn context.
+        const user = await this.userProfile.get(step.context, {});
+
+        // then copy the properties directly from the dialog-object
+        user.age = step.values[USER_INFO].age;
+        user.name = step.values[USER_INFO].name;
+
+        // finally store it all back into the userProfile-memory
+        await this.userProfile.set(step.context, user);
+
         return await step.endDialog();
     }
 
     // This step displays the captured information back to the user.
     async displayProfile(step) {
+        // Get the state properties from the turn context.
         const user = await this.userProfile.get(step.context, {});
         if (user.age) {
             await step.context.sendActivity(`Your name is ${ user.name } and you are ${ user.age } years old.`);
