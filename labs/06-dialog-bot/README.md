@@ -61,6 +61,7 @@ Die Bibliothek enthält eine Reihe von vordefinierten Eingabeaufforderungsklasse
 
 ## Weitere Informationen
 
+- [Managing State – Bot Memory][23]
 - [Prompt types][12]
 - [Waterfall dialogs][13]
 - [Ask the user questions][14]
@@ -91,6 +92,7 @@ Die Bibliothek enthält eine Reihe von vordefinierten Eingabeaufforderungsklasse
 [20]: https://docs.botframework.com
 [21]: https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0
 [22]: https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0
+[23]: https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0
 [27]: https://github.com/microsoft/botbuilder-js/tree/master/libraries/botbuilder-dialogs
 [30]: https://www.npmjs.com/package/restify
 [31]: https://www.npmjs.com/package/dotenv
