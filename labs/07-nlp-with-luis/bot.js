@@ -43,13 +43,13 @@ class LuisBot {
 
                     // check if the entity found is the one we are looking for
                     // this is usually only necessary if there are more then one entity in an intent
-                    if(entities[0].type == "Product") {
+                    if(entities.length > 0 && entities[0].type == "Product") {
                         // we found a product
                         var product = entities[0].entity;
                         await turnContext.sendActivity(`Your ordered ${ product }`);
                     } else {
                         // we found nothing
-                        await turnContext.sendActivity(`Your ordered nothing`);
+                        await turnContext.sendActivity(`I do not know what you ordered.`);
                     }
                 }
             } else {
