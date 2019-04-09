@@ -51,7 +51,13 @@ Die Bibliothek enthält eine Reihe von vordefinierten Eingabeaufforderungsklasse
 
 ## Aufgaben
 
-1. tbd
+1. Bring dem Bot bei zwei verschiedene "Knock Knock"-Witze zu erzählen
+    - [Though Catalog 40 Ridiculous ‘Knock Knock’ Jokes](https://thoughtcatalog.com/melanie-berliet/2015/09/40-ridiculous-knock-knock-jokes-thatll-get-you-a-laugh-on-demand/)
+
+2. Nutze den Bot um eine Bewerbungsgespräch durchzuführen. Wechsle zwischen verschiedenen Fragetypen. Minimum fünf Fragen.
+    - Fange mit Standard-Fragen an (Name, Alter, ...)
+    - [Swiss Miss Favorite Interview Questions](https://www.swiss-miss.com/2017/07/my-favorite-interview-questions.html)
+    - Ermögliche dem Bewerber nach dem Interview die gespeicherten Antworten abzufragen
 
 ## Weitere Informationen
 

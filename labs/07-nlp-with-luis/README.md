@@ -128,7 +128,14 @@ Der Spracherkennungsdienst (LUIS) ermöglicht deiner Anwendung zu verstehen, was
 
 ## Aufgaben
 
-1. Bringe deinem 
+Verbessere die Fähigkeiten des Bots aus Übung 04 mithilfe von LUIS.
+Nutze Entities um besser auf die Eingaben antworten zu können.
+
+1. Bringe deinem Bot eine Begrüßung bei
+2. Lass ihn einen Witz erzählen
+3. Ermögliche dem Bot „persönliche“ Fragen zu beantworten
+    - Lieblingsessen, -song, -vorlesung, …
+    - Stimmung, Hobbies, …
 
 ## Weitere Informationen
 

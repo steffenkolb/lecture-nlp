@@ -50,16 +50,6 @@ this.dialogs.add(new NumberPrompt("How old are you", async (prompt) => {
 }));
 ```
 
-Oder Auswahlmöglichkeiten, um die Aufforderung zu beantworten.
-
-```javascript
-// first we create a dialogset for the prompts
-this.dialogs = new DialogSet(this.dialogState);
-
-
-```
-
-
 Außerdem können Sie beim Erstellen der Eingabeaufforderung eine benutzerdefinierte Überprüfung für Ihre Eingabeaufforderung hinzufügen. Angenommen, wir wollten eine Gruppengröße über die Zahleneingabeaufforderung abrufen. Diese Gruppengröße muss jedoch mehr als 2 und weniger als 12 sein. Die Eingabeaufforderung prüft zuerst, ob sie eine gültige Nummer erhalten hat, und führt dann die benutzerdefinierte Überprüfung aus, falls es ist vorgesehen. Wenn die benutzerdefinierte Überprüfung fehlschlägt, wird der Benutzer wie oben erneut aufgefordert.
 Wenn eine Eingabeaufforderung abgeschlossen ist, wird der angeforderte Ergebniswert explizit zurückgegeben. Wenn dieser Wert zurückgegeben wird, können wir sicher sein, dass er sowohl die integrierte Eingabeaufforderungsprüfung als auch alle zusätzlichen benutzerdefinierten Überprüfungen bestanden hat, die möglicherweise bereitgestellt wurden.
 
@@ -81,23 +71,23 @@ Ein Wasserfalldialog ist eine spezifische Implementierung eines Dialogs, die hä
 In Wasserfallschritten wird der Kontext des Wasserfalldialogs im *[WaterfallStepContext](https://docs.microsoft.com/en-us/javascript/api/botbuilder-dialogs/waterfallstepcontext?view=botbuilder-ts-latest)* gespeichert. Dieser ähnelt dem Dialogkontext, da er Zugriff auf den aktuellen Turn-Kontext und Zustand bietet. Verwenden Sie das Wasserfallschritt-Kontextobjekt, um aus einem Wasserfallschritt heraus mit einem Dialogsatz zu interagieren.
 
 ```javascript
-async nameStep(stepContext) {
+async nameStep(step) {
     // Create an object in which to collect the user's information within the dialog. We can use this information in subsequent steps.
-    stepContext.values["user_info"] = {};
+    step.values["user_info"] = {};
 
     // Ask the user to enter their name.
-    return await stepContext.prompt(NAME_PROMPT, 'Please enter your name.');
+    return await step.prompt(NAME_PROMPT, 'Please enter your name.');
 }
 
-async ageStep(stepContext) {
+async ageStep(step) {
     // fetch user-name from previous step, where we asked for the name
-    var name = stepContext.result;
+    var name = step.result;
 
     // then set the user's name to the one she entered before
-    stepContext.values["user_info"].name = name;
+    step.values["user_info"].name = name;
 
     // Next we ask the user for her age
-    return await stepContext.prompt(AGE_PROMPT, 'Please enter your age.');
+    return await step.prompt(AGE_PROMPT, 'Please enter your age.');
 }
 ```
 
