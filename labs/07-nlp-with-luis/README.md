@@ -63,8 +63,8 @@ LUIS klassifiziert Nachrichten nach einer Reihe vordefinierter Absichten (Intent
 3. Wechsle in der Menüleiste über `MANAGE` zum Untermenüpunkt `Application Information`
     1. Kopiere dir die `Application ID`
 4. Wechsle danach zum Untermenüpunkt Keys and Endpoints
-    1. Kopiere dir `Authoring Key`
-    2. Notiere die dann den `Endpoint` aus der Liste (z.B.: https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/717536c2-726b-4edd-a990-1d0894caff5a?verbose=true&timezoneOffset=-360&subscription-key=713c2d1437814a64bdae2c6c8ff51490&q=)
+    1. Kopiere den `Authoring Key`
+    2. Notiere dir dann den `Endpoint` aus der Liste (z.B.: https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/717536c2-726b-4edd-a990-1d0894caff5a?verbose=true&timezoneOffset=-360&subscription-key=713c2d1437814a64bdae2c6c8ff51490&q=)
     3. Und abschließend aus derselben Liste die Region (`westus`)
 5. Setze die Werte in deine Bot-Datei `nlp-with-luis.bot` ein
 6. Passe dort den Eintrag unter `services` mit dem Typ `luis` an
