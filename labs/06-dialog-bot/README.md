@@ -32,7 +32,7 @@ Es sind bereits erste Interaktionen mit dem Benutzer integriert, die beliebig er
 
 [Bot Framework Emulator][5] ist eine Desktop-Anwendung welche sich mit dem Bot verbindet und somit einen interaktiven Test ermöglicht.
 
-- Installiere den Bot Framework Emulator der Version 4.2.0 or höher von [hier][6]
+- Installiere den Bot Framework Emulator der Version 4.6.0 or höher von [hier][6]
 
 ### Verbinde den Bot und den Bot Framework Emulator
 

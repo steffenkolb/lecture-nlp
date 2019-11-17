@@ -199,9 +199,7 @@ class DailogBot {
                     // bot was added to the conversation, and the opposite indicates this is a user.
                     if (turnContext.activity.membersAdded[idx].id !== turnContext.activity.recipient.id) {
                         // Send a "this is what the bot does" message.
-                        const description = "I am a bot that demonstrates the TextPrompt and NumberPrompt classes " +
-                            "to collect your name and age, then store those values in UserState for later use." +
-                            "Say anything to continue.";
+                        const description = "I am a bot to demonstrate conversations in multiple steps as well as memory. Say anything to continue.";
                         await turnContext.sendActivity(description);
                     }
                 }

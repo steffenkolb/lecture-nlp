@@ -27,7 +27,7 @@ Das Experiment starten wir nun wie gewohnt über npm:
 
 ```bash
 cd C:\Projekt\Ordner
-npm run start
+npm start
 ```
 
 Danach ist die Übung über einen Webbrowser der Wahl unter folgender Addresse erreichbar:

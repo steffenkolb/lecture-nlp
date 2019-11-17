@@ -1,4 +1,4 @@
-// Load library
+// Load libraries
 import words from 'talisman/tokenizers/words';
 import porter from 'talisman/stemmers/porter';
 import levenshtein from 'talisman/metrics/distance/levenshtein';

@@ -1,4 +1,4 @@
-# Einführung in NLP 2: Textanalyse
+# Einführung in NLP 3: Textanalyse
 
 In diesem Experiment führt ihr selbst NLP-Übungen durch.
 Eure Aufgaben findet ihr in der Datei `experiment.js` im Stammordner des Experiments.
@@ -20,11 +20,11 @@ npm install
 
 Sollte dies ohne Problem durchlaufen, starten wir die Übung mithilfe von NPM.
 Öffne ein Terminal-Programm deiner Wahl und führe folgende Befehle aus.
-Ersetzt den `Projekt\Ordner`Pfad dabei mit dem Pfad zu diesem Experiment.
+Ersetzt den `Projekt\Ordner`-Pfad dabei mit dem Pfad zu diesem Experiment.
 
 ```bash
 cd C:\Projekt\Ordner
-npm run start
+npm start
 ```
 
 Danach ist die Übung über einen Webbrowser der Wahl unter folgender Addresse erreichbar:

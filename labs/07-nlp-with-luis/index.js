@@ -32,33 +32,8 @@ const DEV_ENVIRONMENT = 'development';
 // See https://aka.ms/about-bot-file to learn more about .bot files.
 const BOT_CONFIGURATION = (process.env.NODE_ENV || DEV_ENVIRONMENT);
 
-// Language Understanding (LUIS) service name as defined in the .bot file.
-const LUIS_CONFIGURATION = 'LuisBot';
-
-if (!LUIS_CONFIGURATION) {
-    console.error('Make sure to update the index.js file with a LUIS_CONFIGURATION name that matches your .bot file.');
-    process.exit();
-}
-
 // Get endpoint and LUIS configurations by service name.
 const endpointConfig = botConfig.findServiceByNameOrId(BOT_CONFIGURATION);
-const luisConfig = botConfig.findServiceByNameOrId(LUIS_CONFIGURATION);
-
-// Map the contents to the required format for `LuisRecognizer`.
-const luisApplication = {
-    applicationId: luisConfig.appId,
-    // CAUTION: Authoring key is used in this example as it is appropriate for prototyping.
-    // When implimenting for deployment/production, assign and use a subscription key instead of an authoring key.
-    endpointKey: luisConfig.authoringKey,
-    endpoint: luisConfig.getEndpoint()
-};
-
-// Create configuration for LuisRecognizer's runtime behavior.
-const luisPredictionOptions = {
-    includeAllIntents: true,
-    log: true,
-    staging: false
-};
 
 // Create adapter. See https://aka.ms/about-bot-adapter to learn more about adapters.
 const adapter = new BotFrameworkAdapter({
@@ -73,25 +48,21 @@ adapter.onTurnError = async (context, error) => {
 };
 
 // Create the LuisBot.
-let bot;
-try {
-    bot = new LuisBot(luisApplication, luisPredictionOptions);
-} catch (err) {
-    console.error(`[botInitializationError]: ${ err }`);
-    process.exit();
-}
+const bot = new LuisBot();
 
 // Create HTTP server.
-let server = restify.createServer();
+const server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function() {
     console.log(`\n${ server.name } listening to ${ server.url }.`);
     console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator.`);
     console.log(`\nTo talk to your bot, open nlp-with-luis.bot file in the emulator.`);
 });
 
-// Listen for incoming requests.
+// Listen for incoming activities and route them to your bot main dialog.
 server.post('/api/messages', (req, res) => {
+    // Route received a request to adapter for processing
     adapter.processActivity(req, res, async (turnContext) => {
-        await bot.onTurn(turnContext);
+        // route to bot activity handler.
+        await bot.run(turnContext);
     });
 });
