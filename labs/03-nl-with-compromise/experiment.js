@@ -9,7 +9,7 @@ import * as helper from './src/helper';
 var doc = helper.getDoc();
 
 /**
- * Hier findet ihr eure Aufgaben. Zur Lösung empfehle ich die Dokumentation unter https://github.com/spencermountain/compromise/wiki/QuickStart
+ * Hier findet ihr eure Aufgaben. Zur Lösung empfehle ich die Dokumentation unter https://github.com/spencermountain/compromise/wiki/Usage
  * Alle Ergebnisse speichert ihr in die Variable "result".
  * 
  * Die Ergebnisse werden dann automatisch auf der Website angezeigt.
