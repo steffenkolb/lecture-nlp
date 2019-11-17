@@ -50,7 +50,7 @@ Die Übung setzt folgende Resourcen vorraus (zu finden im Ordner `resources` des
 - Starte die Bot Framework Emulator Anwendung
 - Gehe zu `File -> Open Bot Configuration`
 - Navigiere zum `05-iot-bot`-Ordner
-- Wähle die `iot-bot.bot`-Dateu
+- Wähle die `iot-bot.bot`-Datei
 
 ## Weitere Informationen
 

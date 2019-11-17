@@ -149,13 +149,7 @@ class MyBot {
                 let temp = tempRequest.data;
 
                 // respond to user
-                let card = CardFactory.heroCard(
-                    'The current temperature is',
-                    [temp],
-                    ['cool']
-               );
-                await turnContext.sendActivity(card);
-                //await turnContext.sendActivity(`The current temperature is ${temp}°C.`);
+                await turnContext.sendActivity(`The current temperature is ${temp}°C.`);
             }
 
             // turn lights on via mqtt
