@@ -8,16 +8,6 @@
             "appId": "",
             "appPassword": "",
             "id": "1"
-        },
-        {
-            "type": "luis",
-            "name": "LuisBot",
-            "appId": "<luis appid>",
-            "version": "0.1",
-            "authoringKey": "<luis authoring key>",
-            "subscriptionKey": "<luis endpoint>",
-            "region": "<luis region>",
-            "id": "158"
         }
     ],
     "padlock": "",

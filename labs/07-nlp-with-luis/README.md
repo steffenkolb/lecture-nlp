@@ -62,35 +62,18 @@ LUIS klassifiziert Nachrichten nach einer Reihe vordefinierter Absichten (Intent
     - **Wichtig**: Immer wenn du die Anwendung erneut trainiert hast, musst du diese über `Publish` neu veröffentlichen bevor die Änderungen wirksam werden
 3. Wechsle in der Menüleiste über `MANAGE` zum Untermenüpunkt `Application Information`
     1. Kopiere dir die `Application ID`
-4. Wechsle danach zum Untermenüpunkt Keys and Endpoints
-    1. Kopiere den `Authoring Key`
-    2. Notiere dir dann den `Endpoint` aus der Liste (z.B.: https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/717536c2-726b-4edd-a990-1d0894caff5a?verbose=true&timezoneOffset=-360&subscription-key=713c2d1437814a64bdae2c6c8ff51490&q=)
-    3. Und abschließend aus derselben Liste die Region (`westus`)
-5. Setze die Werte in deine Bot-Datei `nlp-with-luis.bot` ein
-6. Passe dort den Eintrag unter `services` mit dem Typ `luis` an
+4. Wechsle danach zum Untermenüpunkt `Azure Resources`
+    1. Kopiere den `Primary key`
+    2. Und abschließend aus derselben Liste die Region (`westus`)
+5. Setze die Werte in deine `.env`-Datei ein
 
-    ```json
-    {
-        "name": "LuisBot",
-        "services": [
-            {...},
-            {
-                "type": "luis",
-                "name": "LuisBot",
-                "appId": "<luis appid>",
-                "version": "0.1",
-                "authoringKey": "<luis authoring key>",
-                "subscriptionKey": "<luis endpoint>",
-                "region": "<luis region>",
-                "id": "158"
-            }
-        ],
-        "padlock": "",
-        "version": "2.0"
-    }
+    ```properties
+    botFilePath=nlp-with-luis.bot
+
+    LuisAppId=Application ID
+    LuisAPIKey=Primary key
+    LuisRegion=Region
     ```
-
-7. **Wichtig:** Die Attribute `LUIS_CONFIGURATION` in `index.js` sowie `name` des LUIS-Endpunkts in der `nlp-with-luis.bot`-Datei müssen identisch zu deinem Anwendungsnamen sein. Daher wähle am besten `LuisBot`.
 
 ## Bot starten
 
@@ -110,7 +93,7 @@ LUIS klassifiziert Nachrichten nach einer Reihe vordefinierter Absichten (Intent
 
 [Bot Framework Emulator][5] ist eine Desktop-Anwendung welche sich mit dem Bot verbindet und somit einen interaktiven Test ermöglicht.
 
-- Installiere den Bot Framework Emulator der Version 4.2.0 or höher von [hier][6]
+- Installiere den Bot Framework Emulator der Version 4.6.0 or höher von [hier][6]
 
 ### Verbinde den Bot und den Bot Framework Emulator
 
