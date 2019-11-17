@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "./node_modules/.bin/parcel index.html"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "compromise": "^11.13.2"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.4"
   }
 }
