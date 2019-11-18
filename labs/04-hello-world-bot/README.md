@@ -12,7 +12,7 @@ Dieser einfache Echo-Bot empfängt die Eingabe des Nutzers und wiederholt die Na
     node --version
     ```
 
-- [Bot Framework Emulator][5]
+- [Bot Framework Emulator][6]
 
 ## Bot starten
 
