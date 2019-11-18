@@ -24,8 +24,15 @@ class MyBot {
             // interpret usermessage with compromise for further use
             var userMessage = nlp(rawtext);
 
-            if(userMessage.has("welcome")) {
-                await turnContext.sendActivity(`Hello you!`);
+            // check if user sends a welcome-meesage
+            if(userMessage.has("(hi|hello|welcome)")) {
+                // Send the use a warm welcome message
+                await turnContext.sendActivity(`Welcome fellow human!`);
+            }
+            // check if use says good bye
+            else if (userMessage.has("(bye|adios|exit|cancel)")){
+                // Send the use a warm welcome message
+                await turnContext.sendActivity(`Sorry to see you go human...`);
             }
             await turnContext.sendActivity(`You said "${rawtext}"`);
         } else {
