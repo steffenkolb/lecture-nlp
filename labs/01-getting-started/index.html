@@ -5,8 +5,6 @@
       <link rel="stylesheet" href="https://unpkg.com/normalize.css@7.0.0/normalize.css" crossorigin="anonymous">
       <link rel="stylesheet" href="./style/skeleton.css">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
     </head>
 
     <body>
@@ -15,7 +13,7 @@
         <div>
           <h5>TOKENIZATION</h5>
           <div class="row">
-            <input class="twelve columns" id="tokenizationInput" class="u-full-width" type="text" placeholder="Type an English sentence" >
+            <input class="twelve columns" id="tokenizationInput" class="u-full-width" type="text" placeholder="Write something in English" >
           </div>
           <div class="row">
             <h6>Tokens of this sentence:</h6>
@@ -36,6 +34,11 @@
         <hr>
         <div>
             <h5>DISTANCE CALCULATION</h5>
+            <div class="row">
+              <a href="https://medium.com/@ethannam/understanding-the-levenshtein-distance-equation-for-beginners-c4285a5604f0" target="_blank">
+                More on Levenshtein Distance
+              </a>
+            </div>
             <div class="row">
                 <input class="five columns" id="distInputOne" class="u-full-width" type="text" placeholder="Type any phrase or word" >
                 <input class="five columns" id="distInputTwo" class="u-full-width" type="text" placeholder="Type another phrase or word" >
