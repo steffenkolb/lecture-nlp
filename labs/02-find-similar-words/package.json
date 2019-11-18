@@ -1,0 +1,15 @@
+{
+  "name": "03-find-similar-words",
+  "version": "1.0.0",
+  "description": "In dieser Übung nutzen wir zum ersten mal Regeln, welche durch Machine Learning Methoden erzeugt wurden. Hierfür verwenden wir die Machine Learning Bibliothek [ml5js](https://ml5js.org). Diese Bibliothek kann bereits vordefinierte Regeln benutzen.",
+  "main": "index.html",
+  "scripts": {
+    "start": "./node_modules/.bin/http-server ./ -p 1234 "
+  },
+  "author": "Steffen Kolb",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
