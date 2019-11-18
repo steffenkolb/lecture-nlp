@@ -11,17 +11,8 @@
 
 ### Repository herunterladen
 
-Ladet euch zunächst dieses Repository herunter. Entpackt das Archiv und verschiebt es an einen Ort eurer Wahl. Im Archiv findet ihr genau diese `REAMDE.md`-Datei wieder.
-
-### Webserver installieren
-
-Um die Übungen lokal auszuführen, ist es notwendig die Dateien über einen Webserver bereitzustellen.
-
-Wir benutzen hierfür [Parcel](https://parceljs.org). Das Programm generieren die Dateien der Website und stellt diese durch einen Webserver zur Verfügung. Um das Programm nutzen zu können installieren wir `Parcel` am besten betriebssystemweit.
-
-```bash
-npm install -g parcel-bundler
-```
+Ladet euch zunächst dieses Repository herunter. Dies geht über folgenden Link: https://github.com/steffenkolb/lecture-nlp/archive/master.zip
+Entpackt das Archiv und verschiebt es an einen Ort eurer Wahl. Im Archiv findet ihr genau diese `REAMDE.md`-Datei wieder.
 
 ## Aufbau der Experimente
 
@@ -31,7 +22,7 @@ Dort ist die Installation und der Start eines Experiments beschrieben.
 ## Resourcen
 
 Im Ordner `resources` findest du zusätzliche Materialien zu den Experimenten.
-Enthalten sind eine NodeRed-Konfiguration sowie ein Arduino-Projekt zum senden und empfangen von MQTT-Nachrichten.
+Enthalten sind eine NodeRed- und eine MQTT-[Docker](https://www.docker.com/products/developer-tools)-Konfiguration, sowie ein Arduino-Projekt zum senden und empfangen von MQTT-Nachrichten.
 
 ## Quellen
 
