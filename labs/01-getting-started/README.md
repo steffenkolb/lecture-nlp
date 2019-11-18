@@ -24,7 +24,7 @@ Ersetzt den `Projekt\Ordner`Pfad dabei mit dem Pfad zu diesem Experiment.
 
 ```bash
 cd C:\Projekt\Ordner
-npm run start
+npm start
 ```
 
 Danach ist die Übung über einen Webbrowser der Wahl unter folgender Addresse erreichbar:
