@@ -31,7 +31,7 @@ class MyBot {
             }
             // check if use says good bye
             else if (userMessage.has("(bye|adios|exit|cancel)")){
-                // Send the use a warm welcome message
+                // Send the use a goob-bye message
                 await turnContext.sendActivity(`Sorry to see you go human...`);
             }
             await turnContext.sendActivity(`You said "${rawtext}"`);
