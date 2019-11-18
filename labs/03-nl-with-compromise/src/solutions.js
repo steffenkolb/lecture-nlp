@@ -41,5 +41,5 @@ helper.outputResult(5, result);
 // --> laura: 3
 // --> monica: 2
 // --> ernie: 2
-result = doc.people().sort('frequency').out('frequency').filter((m,i) => m.count >= 2);
+result = doc.people().out('frequency').filter((m,i) => m.count >= 2);
 helper.outputFrequencyResult(6, result);
