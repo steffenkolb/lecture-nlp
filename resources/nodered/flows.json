@@ -1,0 +1,222 @@
+[
+    {
+        "id": "450bdebc.db8468",
+        "type": "tab",
+        "label": "IoT Dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e26090fc.d2d46",
+        "type": "inject",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "temp",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "x": 160,
+        "y": 40,
+        "wires": [
+            [
+                "82bf369e.d171"
+            ]
+        ]
+    },
+    {
+        "id": "1c0b7653.ae79c2",
+        "type": "mqtt out",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/temp",
+        "qos": "0",
+        "retain": "false",
+        "broker": "f562f84f.192888",
+        "x": 560,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "6ba45fa3.4abf9",
+        "type": "http in",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "url": "/temp",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "4430261.0b920d8"
+            ]
+        ]
+    },
+    {
+        "id": "9cede88e.00de58",
+        "type": "http response",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 560,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "bdba31f3.db689",
+        "type": "mqtt in",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/temp",
+        "qos": "2",
+        "broker": "f562f84f.192888",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "e7cd5599.8e5e7"
+            ]
+        ]
+    },
+    {
+        "id": "e7cd5599.8e5e7",
+        "type": "function",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "func": "global.set(\"currentTemp\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "467e659d.bfed44"
+            ]
+        ]
+    },
+    {
+        "id": "467e659d.bfed44",
+        "type": "debug",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 560,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "4430261.0b920d8",
+        "type": "function",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "func": "msg.payload = global.get(\"currentTemp\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "9cede88e.00de58"
+            ]
+        ]
+    },
+    {
+        "id": "82bf369e.d171",
+        "type": "random",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "low": "-10",
+        "high": "30",
+        "inte": "true",
+        "property": "payload",
+        "x": 380,
+        "y": 40,
+        "wires": [
+            [
+                "1c0b7653.ae79c2"
+            ]
+        ]
+    },
+    {
+        "id": "e7d3e60c.3b0d5",
+        "type": "inject",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/led",
+        "payload": "ON",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "c7518a7a.33c12"
+            ]
+        ]
+    },
+    {
+        "id": "c7518a7a.33c12",
+        "type": "mqtt out",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/led",
+        "qos": "0",
+        "retain": "false",
+        "broker": "f562f84f.192888",
+        "x": 550,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "3891090d.82d216",
+        "type": "inject",
+        "z": "450bdebc.db8468",
+        "name": "",
+        "topic": "iot/led",
+        "payload": "OFF",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "x": 170,
+        "y": 340,
+        "wires": [
+            [
+                "c7518a7a.33c12"
+            ]
+        ]
+    },
+    {
+        "id": "f562f84f.192888",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "mqtt-broker",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": ""
+    }
+]
