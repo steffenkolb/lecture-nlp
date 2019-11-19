@@ -39,14 +39,14 @@ LUIS klassifiziert Nachrichten nach einer Reihe vordefinierter Absichten (Intent
 3. Drücke auf `Done`
 4. Wähle die neu erstellte Anwendung `LuisBot`
 5. Erstelle einen Intent unter `Intents` und dann `+ Create new intent`
-6. Gib deinem Intent einen Namen (`Time.Current`)
+6. Gib deinem Intent einen Namen (`Time_Current`)
 7. Erstelle fünf Varianten, wie jemand nach der Uhrzeit fragen könnte
     - Info: Nach jeder Variante mit `Enter` bestätigen
 8. Gehe im Menü links auf `Entities` und lege mit `+ Create new entity` eine Entität an
     - Name (`Product`)
     - Entitype type (`Simple`)
     - Drücke `Done`
-9. Wähle dann im Menü wieder `Intents` und lege einen einen neuen Intent mit dem Namen `Shopping.Order` an
+9. Wähle dann im Menü wieder `Intents` und lege einen einen neuen Intent mit dem Namen `Shopping_Order` an
 10. Erstelle wiederum fünf Varianten; diesmal, wie ein Benutzer ein Produkt bestellen könnte
     - Beispiel `I would like to have a pizza`
     - Markiere bei jeder Variante das Produkt (im Beispiel: `pizza`) und wähle die Entität `Product`
