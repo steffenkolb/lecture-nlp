@@ -82,40 +82,46 @@ class DailogBot {
     }
 
     // This step in the dialog prompts the user for their name.
-    async promptForName(step) {
+    async promptForName(stepContext) {
         // create new object to store the user_info into
-        step.values[USER_INFO] = {};
-        return await step.prompt(NAME_PROMPT, `What is your name, human?`);
+        stepContext.values[USER_INFO] = {};
+        return await stepContext.prompt(NAME_PROMPT, `What is your name, human?`);
     }
 
-    // This step captures the user's name, then prompts whether or not to collect an age.
-    async confirmAgePrompt(step) {
-        step.values[USER_INFO].name = step.result;
-        await step.prompt(CONFIRM_PROMPT, 'Do you want to give your age?', ['yes', 'no']);
+    
+    /**
+     * This step captures the user's name, then prompts whether or not to collect an age.
+     * @param {WaterfallStepContext} stepContext The contains the context-information about the previous step. For example the result of the promt.
+     * See: https://docs.microsoft.com/en-us/javascript/api/botbuilder-dialogs/waterfallstepcontext?view=botbuilder-ts-latest
+     */
+    async confirmAgePrompt(stepContext) {
+        stepContext.values[USER_INFO].name = stepContext.result;
+        await stepContext.prompt(CONFIRM_PROMPT, 'Do you want to give your age?', ['yes', 'no']);
     }
 
     // This step checks the user's response - if yes, the bot will proceed to prompt for age.
     // Otherwise, the bot will skip the age step.
-    async promptForAge(step) {
-        if (step.result && step.result.value === 'yes') {
-            return await step.prompt(AGE_PROMPT, `What is your age?`,
+    async promptForAge(stepContext) {
+        if (stepContext.result && stepContext.result.value === 'yes') {
+            return await stepContext.prompt(AGE_PROMPT, `What is your age?`,
                 {
                     retryPrompt: 'Sorry, please specify your age as a positive number or say cancel.'
                 }
             );
         } else {
-            return await step.next(-1);
+            // jump to next step in dialog, setting the result to "-1"
+            return await stepContext.next(-1);
         }
     }
 
     // This step captures the user's age.
-    async captureAge(step) {
-        if (step.result !== -1) {            
+    async captureAge(stepContext) {
+        if (stepContext.result !== -1) {            
             // store the age in the info-object
-            step.values[USER_INFO].age = step.result;
-            await step.context.sendActivity(`I will remember that you are ${ step.result } years old.`);
+            stepContext.values[USER_INFO].age = stepContext.result;
+            await stepContext.context.sendActivity(`I will remember that you are ${ stepContext.result } years old.`);
         } else {
-            await step.context.sendActivity(`No age given.`);
+            await stepContext.context.sendActivity(`No age given.`);
         }
 
         // finally save all this informationen into the user-specific memory
@@ -123,28 +129,28 @@ class DailogBot {
         // just store it into the profile right away in each step :)
 
         // First: Get the state properties from the turn context.
-        const user = await this.userProfile.get(step.context, {});
+        const user = await this.userProfile.get(stepContext.context, {});
 
         // then copy the properties directly from the dialog-object
-        user.age = step.values[USER_INFO].age;
-        user.name = step.values[USER_INFO].name;
+        user.age = stepContext.values[USER_INFO].age;
+        user.name = stepContext.values[USER_INFO].name;
 
         // finally store it all back into the userProfile-memory
-        await this.userProfile.set(step.context, user);
+        await this.userProfile.set(stepContext.context, user);
 
-        return await step.endDialog();
+        return await stepContext.endDialog();
     }
 
     // This step displays the captured information back to the user.
-    async displayProfile(step) {
+    async displayProfile(stepContext) {
         // Get the state properties from the turn context.
-        const user = await this.userProfile.get(step.context, {});
+        const user = await this.userProfile.get(stepContext.context, {});
         if (user.age) {
-            await step.context.sendActivity(`Your name is ${ user.name } and you are ${ user.age } years old.`);
+            await stepContext.context.sendActivity(`Your name is ${ user.name } and you are ${ user.age } years old.`);
         } else {
-            await step.context.sendActivity(`Your name is ${ user.name } and you did not share your age.`);
+            await stepContext.context.sendActivity(`Your name is ${ user.name } and you did not share your age.`);
         }
-        return await step.endDialog();
+        return await stepContext.endDialog();
     }
 
     /**
